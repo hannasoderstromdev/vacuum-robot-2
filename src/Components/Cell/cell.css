@@ -1,0 +1,16 @@
+.cell {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cleaned {
+  background-color: green;
+}
+
+.not-cleaned {
+  background-color: brown;
+}
