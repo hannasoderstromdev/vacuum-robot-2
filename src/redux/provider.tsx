@@ -1,20 +1,15 @@
-import React, { ReactNode } from "react";
-import { applyMiddleware, compose, createStore } from "redux";
-import { Provider } from "react-redux";
-import thunkMiddleware from "redux-thunk";
+import React, { ReactNode } from 'react';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
 
-import { reducer } from "./reducer";
-import { Store } from "./type";
+import { reducer } from './reducer';
+import { Store } from './type';
 
 const composeEnhancers =
-  process.env.NODE_ENV === "development"
-    ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-    : compose;
+  process.env.NODE_ENV === 'development' ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : compose;
 
-const store: Store = createStore(
-  reducer,
-  composeEnhancers(applyMiddleware(thunkMiddleware))
-);
+const store: Store = createStore(reducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 type Props = {
   children: ReactNode;

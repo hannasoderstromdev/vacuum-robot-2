@@ -1,26 +1,26 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { selectRobot } from '../../redux/robot/selectors'
+import { selectRobot } from '../../redux/robot/selectors';
 
-import './robot.css'
+import './robot.css';
 
 type RobotProps = {
-  id: string
-}
+  id: string;
+};
 
 function Robot({ id }: RobotProps) {
-  const { x, y } = useSelector(selectRobot)
+  const { x, y } = useSelector(selectRobot);
 
   function isVisible() {
-    return id === `x${x}y${y}`
+    return id === `x${x}y${y}`;
   }
-  
+
   return isVisible() ? (
-    <div data-testid="robot" className="robot">
+    <div className="robot" data-testid="robot">
       <span>O</span>
     </div>
-  ) : null
+  ) : null;
 }
 
-export default Robot
+export default Robot;

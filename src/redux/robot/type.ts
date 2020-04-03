@@ -1,4 +1,4 @@
-export const SET_COORDINATES = "SET_COORDINATES";
+export const SET_COORDINATES = 'SET_COORDINATES';
 
 export interface Coordinates {
   x: number;
@@ -10,8 +10,7 @@ export interface SetCoordinates {
   payload: Coordinates;
 }
 
-
-export type RobotActionTypes = Coordinates | SetCoordinates
+export type RobotActionTypes = Coordinates | SetCoordinates;
 
 export enum Headings {
   N = 'N',

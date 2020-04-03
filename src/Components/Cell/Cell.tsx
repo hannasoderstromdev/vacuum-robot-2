@@ -1,20 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-import './cell.css' 
+import './cell.css';
 
 type CellProps = {
-  id: string
-  isCleaned: boolean
-  children?: React.ReactNode
-}
+  id: string;
+  isCleaned: boolean;
+  children?: React.ReactNode;
+};
 
 function Cell({ id, isCleaned, children }: CellProps): JSX.Element {
   return (
-    <li
-      data-testid={`cell-${id}`}
-      className={isCleaned ? 'cell cleaned' : 'cell not-cleaned'}
-  >{children}</li>
-  )
+    <li className={isCleaned ? 'cell cleaned' : 'cell not-cleaned'} data-testid={`cell-${id}`}>
+      {children}
+    </li>
+  );
 }
 
-export default Cell
+export default Cell;

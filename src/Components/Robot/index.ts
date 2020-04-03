@@ -1,1 +1,1 @@
-export { default } from './Robot'
+export { default } from './Robot';
