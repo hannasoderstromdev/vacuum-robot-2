@@ -7,12 +7,12 @@ module.exports = {
     node: true,
   },
   extends: [
-    'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended', // needs to be last
   ],
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
     jsx: true,
@@ -50,7 +50,7 @@ module.exports = {
     'react/jsx-filename-extension': [
       2,
       {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.tsx'],
       },
     ],
     'react/jsx-key': 2,
@@ -81,4 +81,4 @@ module.exports = {
     CAPTIONS: true,
     SAVED_REPORTID: true,
   },
-}
+};
