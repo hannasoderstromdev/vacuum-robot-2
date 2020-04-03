@@ -3,7 +3,7 @@ import { State } from '../type';
 
 import { RobotReducerState } from './reducer';
 
-export function selectRobotState(state: State): RobotReducerState {
+function selectRobotState(state: State): RobotReducerState {
   return state.robot;
 }
 
