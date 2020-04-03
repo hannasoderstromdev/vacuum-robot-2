@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { move } from './redux/robot/actions';
+import { move, Coordinates } from './redux/robot/actions';
 import { CellsActions } from './redux/cells/actions';
 
 import { selectNumberOfCellsCleaned } from './redux/cells/selectors';
@@ -11,7 +11,7 @@ import Room from './Components/Room';
 
 import './app.css';
 
-export function getRandomHeading() {
+export function getRandomHeading(): Headings.N | Headings.E | Headings.S | Headings.W {
   const availableHeadings = [Headings.N, Headings.E, Headings.S, Headings.W];
 
   const randomIndex = Math.round(Math.random() * 3);
@@ -19,13 +19,13 @@ export function getRandomHeading() {
   return availableHeadings[randomIndex];
 }
 
-export function getRandomCoordinates() {
+export function getRandomCoordinates(): Coordinates {
   const y = Math.round(Math.random() * 9);
   const x = Math.round(Math.random() * 9);
   return { x, y };
 }
 
-export function msToMinutesAndSeconds(ms: number) {
+export function msToMinutesAndSeconds(ms: number): string {
   const minutes = Math.floor(ms / 60000);
   const seconds = (ms % 60000) / 1000;
 
@@ -63,7 +63,7 @@ function App(): JSX.Element {
     return () => clearInterval(interval);
   }, [runOnInterval, moveRobot]);
 
-  function onReset() {
+  function onReset(): void {
     // reset robot and cleaned cells
     setTimeSpent(0);
     dispatch(CellsActions.resetCells());
