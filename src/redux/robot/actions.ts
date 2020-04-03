@@ -31,14 +31,14 @@ export function move({ heading }: Heading): DispatchAction {
   return async (dispatch, getState) => {
     const { x, y } = getState().robot;
 
-    // make sure move in set heading doesn't go out of bounds, otherwise get a new heading
+    // make sure move in set heading doesn't go out of bounds
 
     const newPosition = {
       x,
       y,
     };
 
-    if (heading === Headings.N) {
+    if (heading === Headings.S) {
       if (y < 9) {
         newPosition.y++;
       }
@@ -50,19 +50,22 @@ export function move({ heading }: Heading): DispatchAction {
       }
     }
 
-    if (heading === Headings.S) {
+    if (heading === Headings.N) {
       if (y > 0) {
         newPosition.y--;
       }
     }
 
     if (heading === Headings.W) {
-      if (x > 1) {
+      if (x > 0) {
         newPosition.x--;
       }
     }
 
-    dispatch(RobotActions.setCoordinates(newPosition));
-    dispatch(CellsActions.setCellIsCleaned(newPosition));
+    // No need to dispatch if robot hasn't moved
+    if (x !== newPosition.x || y !== newPosition.y) {
+      dispatch(RobotActions.setCoordinates(newPosition));
+      dispatch(CellsActions.setCellIsCleaned(newPosition));
+    }
   };
 }
